@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="BAL/BAL.csproj" Id="dc36e919-f935-47c1-bf0e-ab6f1a84f504" />
+  <Project Path="Common/Common.csproj" Id="825d4915-1072-4062-81a0-a53b14b3159a" />
+  <Project Path="UI/UI.csproj" Id="2d0b3a08-fd36-49f0-8716-48555cfa6c5b" />
+  <Project Path="上位机程序/上位机程序.csproj" Id="ea4f81ed-57a9-4b8e-9d8c-a159ed7960d1" />
+</Solution>
