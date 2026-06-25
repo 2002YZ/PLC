@@ -165,7 +165,7 @@ namespace BAL
         public int MeasureCheckNo
         {
             get { return measureCheckNo; }
-            private set
+            set
             {
                 measureCheckNo = value;
                 WritePlc(MeasureCheckNoAddr, value);
@@ -179,7 +179,7 @@ namespace BAL
         public int CenterCalibrationCheckNo
         {
             get { return centerCalibrationCheckNo; }
-            private set
+            set
             {
                 centerCalibrationCheckNo = value;
                 WritePlc(CenterCalibrationCheckNoAddr, value);
@@ -193,7 +193,7 @@ namespace BAL
         public int NPointCalibrationCheckNo
         {
             get { return nPointCalibrationCheckNo; }
-            private set
+            set
             {
                 nPointCalibrationCheckNo = value;
                 WritePlc(NPointCalibrationCheckNoAddr, value);

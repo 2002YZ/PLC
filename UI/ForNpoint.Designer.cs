@@ -28,23 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ForNpoint));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.btnStart = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.cogRecordsDisplay1 = new Cognex.VisionPro.CogRecordsDisplay();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnStart = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.cogRecordDisplay1 = new Cognex.VisionPro.CogRecordDisplay();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cogRecordDisplay1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.cogRecordsDisplay1);
+            this.panel1.Controls.Add(this.cogRecordDisplay1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -60,36 +63,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(440, 690);
             this.panel2.TabIndex = 1;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.btnStart);
-            this.groupBox1.Controls.Add(this.btnClear);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(440, 125);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "操作";
-            // 
-            // btnClear
-            // 
-            this.btnClear.Location = new System.Drawing.Point(20, 40);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(135, 32);
-            this.btnClear.TabIndex = 2;
-            this.btnClear.Text = "清除九点标定";
-            this.btnClear.UseVisualStyleBackColor = true;
-            // 
-            // btnStart
-            // 
-            this.btnStart.Location = new System.Drawing.Point(241, 40);
-            this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(139, 32);
-            this.btnStart.TabIndex = 3;
-            this.btnStart.Text = "开始九点标定";
-            this.btnStart.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -112,16 +85,55 @@
             this.listBox1.Size = new System.Drawing.Size(434, 541);
             this.listBox1.TabIndex = 0;
             // 
-            // cogRecordsDisplay1
+            // groupBox1
             // 
-            this.cogRecordsDisplay1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cogRecordsDisplay1.Location = new System.Drawing.Point(0, 0);
-            this.cogRecordsDisplay1.Name = "cogRecordsDisplay1";
-            this.cogRecordsDisplay1.SelectedRecordKey = null;
-            this.cogRecordsDisplay1.ShowRecordsDropDown = true;
-            this.cogRecordsDisplay1.Size = new System.Drawing.Size(712, 690);
-            this.cogRecordsDisplay1.Subject = null;
-            this.cogRecordsDisplay1.TabIndex = 0;
+            this.groupBox1.Controls.Add(this.btnStart);
+            this.groupBox1.Controls.Add(this.btnClear);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(440, 125);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "操作";
+            // 
+            // btnStart
+            // 
+            this.btnStart.Location = new System.Drawing.Point(241, 40);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(139, 32);
+            this.btnStart.TabIndex = 3;
+            this.btnStart.Text = "开始九点标定";
+            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(20, 40);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(135, 32);
+            this.btnClear.TabIndex = 2;
+            this.btnClear.Text = "清除九点标定";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // cogRecordDisplay1
+            // 
+            this.cogRecordDisplay1.ColorMapLowerClipColor = System.Drawing.Color.Black;
+            this.cogRecordDisplay1.ColorMapLowerRoiLimit = 0D;
+            this.cogRecordDisplay1.ColorMapPredefined = Cognex.VisionPro.Display.CogDisplayColorMapPredefinedConstants.None;
+            this.cogRecordDisplay1.ColorMapUpperClipColor = System.Drawing.Color.Black;
+            this.cogRecordDisplay1.ColorMapUpperRoiLimit = 1D;
+            this.cogRecordDisplay1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cogRecordDisplay1.DoubleTapZoomCycleLength = 2;
+            this.cogRecordDisplay1.DoubleTapZoomSensitivity = 2.5D;
+            this.cogRecordDisplay1.Location = new System.Drawing.Point(0, 0);
+            this.cogRecordDisplay1.MouseWheelMode = Cognex.VisionPro.Display.CogDisplayMouseWheelModeConstants.Zoom1;
+            this.cogRecordDisplay1.MouseWheelSensitivity = 1D;
+            this.cogRecordDisplay1.Name = "cogRecordDisplay1";
+            this.cogRecordDisplay1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("cogRecordDisplay1.OcxState")));
+            this.cogRecordDisplay1.Size = new System.Drawing.Size(712, 690);
+            this.cogRecordDisplay1.TabIndex = 0;
             // 
             // ForNpoint
             // 
@@ -134,8 +146,9 @@
             this.Text = "ForNpoint";
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cogRecordDisplay1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -145,10 +158,10 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private Cognex.VisionPro.CogRecordsDisplay cogRecordsDisplay1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnClear;
+        private Cognex.VisionPro.CogRecordDisplay cogRecordDisplay1;
     }
 }

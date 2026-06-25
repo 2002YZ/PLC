@@ -28,30 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCenter));
             this.btnStart = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.labelyuan = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.labelthree = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.labeltwo = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelone = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lbLog = new System.Windows.Forms.ListBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cogRecordsDisplay1 = new Cognex.VisionPro.CogRecordsDisplay();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cogRecordDisplay1 = new Cognex.VisionPro.CogRecordDisplay();
             this.groupBox2.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cogRecordDisplay1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnStart
@@ -71,26 +70,17 @@
             this.btnSave.TabIndex = 12;
             this.btnSave.Text = "保存圆心坐标";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // label7
+            // labelyuan
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("楷体", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label7.Location = new System.Drawing.Point(405, 133);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(68, 18);
-            this.label7.TabIndex = 11;
-            this.label7.Text = ":00.00";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("楷体", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label8.Location = new System.Drawing.Point(287, 133);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(78, 18);
-            this.label8.TabIndex = 10;
-            this.label8.Text = "x:00.00";
+            this.labelyuan.AutoSize = true;
+            this.labelyuan.Font = new System.Drawing.Font("楷体", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelyuan.Location = new System.Drawing.Point(287, 133);
+            this.labelyuan.Name = "labelyuan";
+            this.labelyuan.Size = new System.Drawing.Size(78, 18);
+            this.labelyuan.TabIndex = 10;
+            this.labelyuan.Text = "x:00.00";
             // 
             // label9
             // 
@@ -102,25 +92,15 @@
             this.label9.TabIndex = 9;
             this.label9.Text = "拟合圆心坐标：";
             // 
-            // label10
+            // labelthree
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("楷体", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label10.Location = new System.Drawing.Point(405, 96);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(68, 18);
-            this.label10.TabIndex = 8;
-            this.label10.Text = ":00.00";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("楷体", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label11.Location = new System.Drawing.Point(287, 96);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(78, 18);
-            this.label11.TabIndex = 7;
-            this.label11.Text = "x:00.00";
+            this.labelthree.AutoSize = true;
+            this.labelthree.Font = new System.Drawing.Font("楷体", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelthree.Location = new System.Drawing.Point(287, 96);
+            this.labelthree.Name = "labelthree";
+            this.labelthree.Size = new System.Drawing.Size(78, 18);
+            this.labelthree.TabIndex = 7;
+            this.labelthree.Text = "x:00.00";
             // 
             // label12
             // 
@@ -132,25 +112,15 @@
             this.label12.TabIndex = 6;
             this.label12.Text = "三次旋转坐标：";
             // 
-            // label4
+            // labeltwo
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("楷体", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(405, 58);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 18);
-            this.label4.TabIndex = 5;
-            this.label4.Text = ":00.00";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("楷体", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(287, 58);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(78, 18);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "x:00.00";
+            this.labeltwo.AutoSize = true;
+            this.labeltwo.Font = new System.Drawing.Font("楷体", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labeltwo.Location = new System.Drawing.Point(287, 58);
+            this.labeltwo.Name = "labeltwo";
+            this.labeltwo.Size = new System.Drawing.Size(78, 18);
+            this.labeltwo.TabIndex = 4;
+            this.labeltwo.Text = "x:00.00";
             // 
             // label6
             // 
@@ -162,25 +132,15 @@
             this.label6.TabIndex = 3;
             this.label6.Text = "二次旋转坐标：";
             // 
-            // label3
+            // labelone
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("楷体", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(405, 23);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 18);
-            this.label3.TabIndex = 2;
-            this.label3.Text = ":00.00";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("楷体", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(287, 23);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 18);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "x:00.00";
+            this.labelone.AutoSize = true;
+            this.labelone.Font = new System.Drawing.Font("楷体", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelone.Location = new System.Drawing.Point(287, 23);
+            this.labelone.Name = "labelone";
+            this.labelone.Size = new System.Drawing.Size(78, 18);
+            this.labelone.TabIndex = 1;
+            this.labelone.Text = "x:00.00";
             // 
             // label1
             // 
@@ -227,17 +187,13 @@
             // 
             this.groupBox1.Controls.Add(this.btnStart);
             this.groupBox1.Controls.Add(this.btnSave);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.labelyuan);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.labelthree);
             this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.labeltwo);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.labelone);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
@@ -247,25 +203,32 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "标定";
             // 
-            // cogRecordsDisplay1
-            // 
-            this.cogRecordsDisplay1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cogRecordsDisplay1.Location = new System.Drawing.Point(0, 0);
-            this.cogRecordsDisplay1.Name = "cogRecordsDisplay1";
-            this.cogRecordsDisplay1.SelectedRecordKey = null;
-            this.cogRecordsDisplay1.ShowRecordsDropDown = true;
-            this.cogRecordsDisplay1.Size = new System.Drawing.Size(773, 804);
-            this.cogRecordsDisplay1.Subject = null;
-            this.cogRecordsDisplay1.TabIndex = 0;
-            // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.cogRecordsDisplay1);
+            this.panel1.Controls.Add(this.cogRecordDisplay1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(773, 804);
             this.panel1.TabIndex = 2;
+            // 
+            // cogRecordDisplay1
+            // 
+            this.cogRecordDisplay1.ColorMapLowerClipColor = System.Drawing.Color.Black;
+            this.cogRecordDisplay1.ColorMapLowerRoiLimit = 0D;
+            this.cogRecordDisplay1.ColorMapPredefined = Cognex.VisionPro.Display.CogDisplayColorMapPredefinedConstants.None;
+            this.cogRecordDisplay1.ColorMapUpperClipColor = System.Drawing.Color.Black;
+            this.cogRecordDisplay1.ColorMapUpperRoiLimit = 1D;
+            this.cogRecordDisplay1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cogRecordDisplay1.DoubleTapZoomCycleLength = 2;
+            this.cogRecordDisplay1.DoubleTapZoomSensitivity = 2.5D;
+            this.cogRecordDisplay1.Location = new System.Drawing.Point(0, 0);
+            this.cogRecordDisplay1.MouseWheelMode = Cognex.VisionPro.Display.CogDisplayMouseWheelModeConstants.Zoom1;
+            this.cogRecordDisplay1.MouseWheelSensitivity = 1D;
+            this.cogRecordDisplay1.Name = "cogRecordDisplay1";
+            this.cogRecordDisplay1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("cogRecordDisplay1.OcxState")));
+            this.cogRecordDisplay1.Size = new System.Drawing.Size(773, 804);
+            this.cogRecordDisplay1.TabIndex = 0;
             // 
             // FrmCenter
             // 
@@ -276,11 +239,13 @@
             this.Controls.Add(this.panel1);
             this.Name = "FrmCenter";
             this.Text = "FrmCenter";
+            this.Load += new System.EventHandler(this.FrmCenter_Load);
             this.groupBox2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cogRecordDisplay1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -289,23 +254,19 @@
 
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label labelyuan;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label labelthree;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label labeltwo;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelone;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ListBox lbLog;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private Cognex.VisionPro.CogRecordsDisplay cogRecordsDisplay1;
         private System.Windows.Forms.Panel panel1;
+        private Cognex.VisionPro.CogRecordDisplay cogRecordDisplay1;
     }
 }
