@@ -46,8 +46,8 @@ namespace BAL
         {
             try
             {
-                //在构造函数中读取配置文件，初始化属性值
-                string configPath = Directory.GetCurrentDirectory() + @"\config\Config.ini";
+               
+                IniConfigHelper.IniPath= configPath;//设置配置文件路径
 
                 //基本点x坐标
                 string x = IniConfigHelper.ReadIniData("PointConfig", "BaseX", "0", configPath);
@@ -63,7 +63,7 @@ namespace BAL
                 this.rotateCenterY = Convert.ToDouble(IniConfigHelper.ReadIniData("PointConfig", "RotateCenterY", "0", configPath));
 
                 //PLC配置
-                string ip = IniConfigHelper.ReadIniData("PlcConfig", "PlcIp", "127.0.0.1", configPath);
+                string ip = IniConfigHelper.ReadIniData("PlcConfig", "PlcIp", "127.0.0.1", configPath);//默认值为127.0.0.1
                 this.plcIp = ip;
 
                 LogHelper.Instance.WriteLog("配置文件读取成功", 1);
@@ -96,7 +96,11 @@ namespace BAL
         public double BaseX
         {
             get { return baseX; }
-            //set { baseX = value; }
+            set 
+            {
+                baseX = value;
+                IniConfigHelper.WriteIniData("PointConfig", "BaseX", baseX.ToString());
+            }
         }
 
         /// <summary>
@@ -107,7 +111,11 @@ namespace BAL
         public double BaseY
         {
             get { return baseY; }
-            //set { baseY = value; }
+            set 
+            {
+                baseY = value;
+                IniConfigHelper.WriteIniData("PointConfig", "BaseY", value.ToString());
+            }
         }
 
         /// <summary>
@@ -118,7 +126,11 @@ namespace BAL
         public double BaseR
         {
             get { return baseR; }
-            //set { baseR = value; }
+            set 
+            { 
+                baseR = value;
+                IniConfigHelper.WriteIniData("PointConfig", "BaseR", value.ToString());
+            }
         }
 
 
@@ -130,7 +142,11 @@ namespace BAL
         public double RotateCenterX
         {
             get { return rotateCenterX; }
-            //set { rotateCenterX = value; }
+            set 
+            {
+                rotateCenterX = value;
+                IniConfigHelper.WriteIniData("PointConfig", "RotateCenterX", value.ToString());
+            }
         }
 
         /// <summary>
@@ -141,7 +157,11 @@ namespace BAL
         public double RotateCenterY
         {
             get { return rotateCenterY; }
-            //set { rotateCenterY = value; }
+            set 
+            { 
+                rotateCenterY = value; 
+                IniConfigHelper.WriteIniData("PointConfig", "RotateCenterY", value.ToString());
+            }
         }
 
         /// <summary>
@@ -152,9 +172,32 @@ namespace BAL
         public string PlcIp
         {
             get { return plcIp; }
-            //set { plcIp  = value; }
+            set 
+            {
+                plcIp  = value; 
+                IniConfigHelper.WriteIniData("PlcConfig", "PlcIp", value);
+            }
         }
 
+
+        /// <summary>
+        /// plc的端口号
+        /// </summary>
+        private int plcPort = 102;
+        public int PlcPort
+        {
+            get { return plcPort; }
+            set 
+            {
+                plcPort = value; 
+                IniConfigHelper.WriteIniData("PlcConfig", "PlcPort", value.ToString());
+            }
+        }
+
+        /// <summary>
+        /// 配置文件路径，默认在当前目录下的config文件夹中，命名为Config.ini
+        /// </summary>
+        private string configPath = Directory.GetCurrentDirectory() + @"\config\Config.ini";
 
 
     }

@@ -43,7 +43,10 @@
             this.其他ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.iO状态ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.报警ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolBlock工具ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cogRecordDisplay1 = new Cognex.VisionPro.CogRecordDisplay();
+            this.cogDisplay1 = new Cognex.VisionPro.Display.CogDisplay();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.listView1 = new System.Windows.Forms.ListView();
@@ -56,16 +59,13 @@
             this.button_ConnectPLC = new System.Windows.Forms.Button();
             this.button_C1 = new System.Windows.Forms.Button();
             this.button_CloseTime = new System.Windows.Forms.Button();
-            this.toolBlock工具ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cogDisplay1 = new Cognex.VisionPro.Display.CogDisplay();
-            this.cogRecordDisplay1 = new Cognex.VisionPro.CogRecordDisplay();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cogRecordDisplay1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cogDisplay1)).BeginInit();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cogDisplay1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cogRecordDisplay1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -97,8 +97,9 @@
             // pLC设置ToolStripMenuItem
             // 
             this.pLC设置ToolStripMenuItem.Name = "pLC设置ToolStripMenuItem";
-            this.pLC设置ToolStripMenuItem.Size = new System.Drawing.Size(162, 28);
+            this.pLC设置ToolStripMenuItem.Size = new System.Drawing.Size(224, 28);
             this.pLC设置ToolStripMenuItem.Text = "PLC设置";
+            this.pLC设置ToolStripMenuItem.Click += new System.EventHandler(this.pLC设置ToolStripMenuItem_Click);
             // 
             // 基础配置ToolStripMenuItem
             // 
@@ -109,8 +110,9 @@
             // 退出系统ToolStripMenuItem
             // 
             this.退出系统ToolStripMenuItem.Name = "退出系统ToolStripMenuItem";
-            this.退出系统ToolStripMenuItem.Size = new System.Drawing.Size(162, 28);
+            this.退出系统ToolStripMenuItem.Size = new System.Drawing.Size(224, 28);
             this.退出系统ToolStripMenuItem.Text = "退出系统";
+            this.退出系统ToolStripMenuItem.Click += new System.EventHandler(this.退出系统ToolStripMenuItem_Click);
             // 
             // 标定ToolStripMenuItem
             // 
@@ -124,14 +126,16 @@
             // 九点标定ToolStripMenuItem
             // 
             this.九点标定ToolStripMenuItem.Name = "九点标定ToolStripMenuItem";
-            this.九点标定ToolStripMenuItem.Size = new System.Drawing.Size(162, 28);
+            this.九点标定ToolStripMenuItem.Size = new System.Drawing.Size(224, 28);
             this.九点标定ToolStripMenuItem.Text = "九点标定";
+            this.九点标定ToolStripMenuItem.Click += new System.EventHandler(this.九点标定ToolStripMenuItem_Click);
             // 
             // 原点标定ToolStripMenuItem
             // 
             this.原点标定ToolStripMenuItem.Name = "原点标定ToolStripMenuItem";
-            this.原点标定ToolStripMenuItem.Size = new System.Drawing.Size(162, 28);
+            this.原点标定ToolStripMenuItem.Size = new System.Drawing.Size(224, 28);
             this.原点标定ToolStripMenuItem.Text = "中心标定";
+            this.原点标定ToolStripMenuItem.Click += new System.EventHandler(this.原点标定ToolStripMenuItem_Click);
             // 
             // 运动ToolStripMenuItem
             // 
@@ -144,8 +148,9 @@
             // jobToolStripMenuItem
             // 
             this.jobToolStripMenuItem.Name = "jobToolStripMenuItem";
-            this.jobToolStripMenuItem.Size = new System.Drawing.Size(121, 28);
+            this.jobToolStripMenuItem.Size = new System.Drawing.Size(224, 28);
             this.jobToolStripMenuItem.Text = "job";
+            this.jobToolStripMenuItem.Click += new System.EventHandler(this.jobToolStripMenuItem_Click);
             // 
             // 其他ToolStripMenuItem
             // 
@@ -169,6 +174,13 @@
             this.报警ToolStripMenuItem.Size = new System.Drawing.Size(58, 28);
             this.报警ToolStripMenuItem.Text = "作业";
             // 
+            // toolBlock工具ToolStripMenuItem
+            // 
+            this.toolBlock工具ToolStripMenuItem.Name = "toolBlock工具ToolStripMenuItem";
+            this.toolBlock工具ToolStripMenuItem.Size = new System.Drawing.Size(224, 28);
+            this.toolBlock工具ToolStripMenuItem.Text = "ToolBlock工具";
+            this.toolBlock工具ToolStripMenuItem.Click += new System.EventHandler(this.toolBlock工具ToolStripMenuItem_Click);
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -179,6 +191,42 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1350, 820);
             this.panel1.TabIndex = 1;
+            // 
+            // cogRecordDisplay1
+            // 
+            this.cogRecordDisplay1.ColorMapLowerClipColor = System.Drawing.Color.Black;
+            this.cogRecordDisplay1.ColorMapLowerRoiLimit = 0D;
+            this.cogRecordDisplay1.ColorMapPredefined = Cognex.VisionPro.Display.CogDisplayColorMapPredefinedConstants.None;
+            this.cogRecordDisplay1.ColorMapUpperClipColor = System.Drawing.Color.Black;
+            this.cogRecordDisplay1.ColorMapUpperRoiLimit = 1D;
+            this.cogRecordDisplay1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cogRecordDisplay1.DoubleTapZoomCycleLength = 2;
+            this.cogRecordDisplay1.DoubleTapZoomSensitivity = 2.5D;
+            this.cogRecordDisplay1.Location = new System.Drawing.Point(622, 0);
+            this.cogRecordDisplay1.MouseWheelMode = Cognex.VisionPro.Display.CogDisplayMouseWheelModeConstants.Zoom1;
+            this.cogRecordDisplay1.MouseWheelSensitivity = 1D;
+            this.cogRecordDisplay1.Name = "cogRecordDisplay1";
+            this.cogRecordDisplay1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("cogRecordDisplay1.OcxState")));
+            this.cogRecordDisplay1.Size = new System.Drawing.Size(728, 820);
+            this.cogRecordDisplay1.TabIndex = 4;
+            // 
+            // cogDisplay1
+            // 
+            this.cogDisplay1.ColorMapLowerClipColor = System.Drawing.Color.Black;
+            this.cogDisplay1.ColorMapLowerRoiLimit = 0D;
+            this.cogDisplay1.ColorMapPredefined = Cognex.VisionPro.Display.CogDisplayColorMapPredefinedConstants.None;
+            this.cogDisplay1.ColorMapUpperClipColor = System.Drawing.Color.Black;
+            this.cogDisplay1.ColorMapUpperRoiLimit = 1D;
+            this.cogDisplay1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.cogDisplay1.DoubleTapZoomCycleLength = 2;
+            this.cogDisplay1.DoubleTapZoomSensitivity = 2.5D;
+            this.cogDisplay1.Location = new System.Drawing.Point(0, 0);
+            this.cogDisplay1.MouseWheelMode = Cognex.VisionPro.Display.CogDisplayMouseWheelModeConstants.Zoom1;
+            this.cogDisplay1.MouseWheelSensitivity = 1D;
+            this.cogDisplay1.Name = "cogDisplay1";
+            this.cogDisplay1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("cogDisplay1.OcxState")));
+            this.cogDisplay1.Size = new System.Drawing.Size(622, 820);
+            this.cogDisplay1.TabIndex = 3;
             // 
             // panel2
             // 
@@ -273,6 +321,7 @@
             this.button_CloseConnectr.TabIndex = 2;
             this.button_CloseConnectr.Text = "断开连接";
             this.button_CloseConnectr.UseVisualStyleBackColor = true;
+            this.button_CloseConnectr.Click += new System.EventHandler(this.button_CloseConnectr_Click);
             // 
             // button_ConnectPLC
             // 
@@ -282,6 +331,7 @@
             this.button_ConnectPLC.TabIndex = 3;
             this.button_ConnectPLC.Text = "连接PLC";
             this.button_ConnectPLC.UseVisualStyleBackColor = true;
+            this.button_ConnectPLC.Click += new System.EventHandler(this.button_ConnectPLC_Click);
             // 
             // button_C1
             // 
@@ -302,48 +352,6 @@
             this.button_CloseTime.UseVisualStyleBackColor = true;
             this.button_CloseTime.Click += new System.EventHandler(this.button_CloseTime_Click);
             // 
-            // toolBlock工具ToolStripMenuItem
-            // 
-            this.toolBlock工具ToolStripMenuItem.Name = "toolBlock工具ToolStripMenuItem";
-            this.toolBlock工具ToolStripMenuItem.Size = new System.Drawing.Size(224, 28);
-            this.toolBlock工具ToolStripMenuItem.Text = "ToolBlock工具";
-            // 
-            // cogDisplay1
-            // 
-            this.cogDisplay1.ColorMapLowerClipColor = System.Drawing.Color.Black;
-            this.cogDisplay1.ColorMapLowerRoiLimit = 0D;
-            this.cogDisplay1.ColorMapPredefined = Cognex.VisionPro.Display.CogDisplayColorMapPredefinedConstants.None;
-            this.cogDisplay1.ColorMapUpperClipColor = System.Drawing.Color.Black;
-            this.cogDisplay1.ColorMapUpperRoiLimit = 1D;
-            this.cogDisplay1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.cogDisplay1.DoubleTapZoomCycleLength = 2;
-            this.cogDisplay1.DoubleTapZoomSensitivity = 2.5D;
-            this.cogDisplay1.Location = new System.Drawing.Point(0, 0);
-            this.cogDisplay1.MouseWheelMode = Cognex.VisionPro.Display.CogDisplayMouseWheelModeConstants.Zoom1;
-            this.cogDisplay1.MouseWheelSensitivity = 1D;
-            this.cogDisplay1.Name = "cogDisplay1";
-            this.cogDisplay1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("cogDisplay1.OcxState")));
-            this.cogDisplay1.Size = new System.Drawing.Size(622, 820);
-            this.cogDisplay1.TabIndex = 3;
-            // 
-            // cogRecordDisplay1
-            // 
-            this.cogRecordDisplay1.ColorMapLowerClipColor = System.Drawing.Color.Black;
-            this.cogRecordDisplay1.ColorMapLowerRoiLimit = 0D;
-            this.cogRecordDisplay1.ColorMapPredefined = Cognex.VisionPro.Display.CogDisplayColorMapPredefinedConstants.None;
-            this.cogRecordDisplay1.ColorMapUpperClipColor = System.Drawing.Color.Black;
-            this.cogRecordDisplay1.ColorMapUpperRoiLimit = 1D;
-            this.cogRecordDisplay1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cogRecordDisplay1.DoubleTapZoomCycleLength = 2;
-            this.cogRecordDisplay1.DoubleTapZoomSensitivity = 2.5D;
-            this.cogRecordDisplay1.Location = new System.Drawing.Point(622, 0);
-            this.cogRecordDisplay1.MouseWheelMode = Cognex.VisionPro.Display.CogDisplayMouseWheelModeConstants.Zoom1;
-            this.cogRecordDisplay1.MouseWheelSensitivity = 1D;
-            this.cogRecordDisplay1.Name = "cogRecordDisplay1";
-            this.cogRecordDisplay1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("cogRecordDisplay1.OcxState")));
-            this.cogRecordDisplay1.Size = new System.Drawing.Size(728, 820);
-            this.cogRecordDisplay1.TabIndex = 4;
-            // 
             // ForMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -359,11 +367,11 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cogRecordDisplay1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cogDisplay1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.cogDisplay1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cogRecordDisplay1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
