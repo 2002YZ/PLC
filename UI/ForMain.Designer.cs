@@ -97,7 +97,7 @@
             // pLC设置ToolStripMenuItem
             // 
             this.pLC设置ToolStripMenuItem.Name = "pLC设置ToolStripMenuItem";
-            this.pLC设置ToolStripMenuItem.Size = new System.Drawing.Size(224, 28);
+            this.pLC设置ToolStripMenuItem.Size = new System.Drawing.Size(162, 28);
             this.pLC设置ToolStripMenuItem.Text = "PLC设置";
             this.pLC设置ToolStripMenuItem.Click += new System.EventHandler(this.pLC设置ToolStripMenuItem_Click);
             // 
@@ -110,7 +110,7 @@
             // 退出系统ToolStripMenuItem
             // 
             this.退出系统ToolStripMenuItem.Name = "退出系统ToolStripMenuItem";
-            this.退出系统ToolStripMenuItem.Size = new System.Drawing.Size(224, 28);
+            this.退出系统ToolStripMenuItem.Size = new System.Drawing.Size(162, 28);
             this.退出系统ToolStripMenuItem.Text = "退出系统";
             this.退出系统ToolStripMenuItem.Click += new System.EventHandler(this.退出系统ToolStripMenuItem_Click);
             // 
@@ -126,14 +126,14 @@
             // 九点标定ToolStripMenuItem
             // 
             this.九点标定ToolStripMenuItem.Name = "九点标定ToolStripMenuItem";
-            this.九点标定ToolStripMenuItem.Size = new System.Drawing.Size(224, 28);
+            this.九点标定ToolStripMenuItem.Size = new System.Drawing.Size(162, 28);
             this.九点标定ToolStripMenuItem.Text = "九点标定";
             this.九点标定ToolStripMenuItem.Click += new System.EventHandler(this.九点标定ToolStripMenuItem_Click);
             // 
             // 原点标定ToolStripMenuItem
             // 
             this.原点标定ToolStripMenuItem.Name = "原点标定ToolStripMenuItem";
-            this.原点标定ToolStripMenuItem.Size = new System.Drawing.Size(224, 28);
+            this.原点标定ToolStripMenuItem.Size = new System.Drawing.Size(162, 28);
             this.原点标定ToolStripMenuItem.Text = "中心标定";
             this.原点标定ToolStripMenuItem.Click += new System.EventHandler(this.原点标定ToolStripMenuItem_Click);
             // 
@@ -148,7 +148,7 @@
             // jobToolStripMenuItem
             // 
             this.jobToolStripMenuItem.Name = "jobToolStripMenuItem";
-            this.jobToolStripMenuItem.Size = new System.Drawing.Size(224, 28);
+            this.jobToolStripMenuItem.Size = new System.Drawing.Size(121, 28);
             this.jobToolStripMenuItem.Text = "job";
             this.jobToolStripMenuItem.Click += new System.EventHandler(this.jobToolStripMenuItem_Click);
             // 
@@ -177,7 +177,7 @@
             // toolBlock工具ToolStripMenuItem
             // 
             this.toolBlock工具ToolStripMenuItem.Name = "toolBlock工具ToolStripMenuItem";
-            this.toolBlock工具ToolStripMenuItem.Size = new System.Drawing.Size(224, 28);
+            this.toolBlock工具ToolStripMenuItem.Size = new System.Drawing.Size(213, 28);
             this.toolBlock工具ToolStripMenuItem.Text = "ToolBlock工具";
             this.toolBlock工具ToolStripMenuItem.Click += new System.EventHandler(this.toolBlock工具ToolStripMenuItem_Click);
             // 
@@ -312,6 +312,7 @@
             this.button_C2.TabIndex = 1;
             this.button_C2.Text = "二次测量";
             this.button_C2.UseVisualStyleBackColor = true;
+            this.button_C2.Click += new System.EventHandler(this.button_C2_Click);
             // 
             // button_CloseConnectr
             // 
@@ -341,6 +342,7 @@
             this.button_C1.TabIndex = 4;
             this.button_C1.Text = "一次测量";
             this.button_C1.UseVisualStyleBackColor = true;
+            this.button_C1.Click += new System.EventHandler(this.button_C1_Click);
             // 
             // button_CloseTime
             // 

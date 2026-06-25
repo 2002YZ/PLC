@@ -1,4 +1,6 @@
 ﻿using BAL;
+using Cognex.VisionPro.CalibFix;
+using S7.Net;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +11,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Interop;
-using S7.Net;
 
 namespace UI
 {
@@ -105,7 +106,7 @@ namespace UI
         {
             try
             {
-                await plc.ConnectAsync(CpuType.S71200, config.PlcIp, config.PlcPort,0,0);
+                await plc.ConnectAsync(CpuType.S71200, config.PlcIp, config.PlcPort, 0, 0);
                 AddLog("PLC连接成功");
                 button_ConnectPLC.Enabled = false;
                 button_CloseConnectr.Enabled = true;
@@ -116,6 +117,77 @@ namespace UI
             {
                 AddLog("PLC连接失败：" + ex.Message);
             }
+        }
+
+
+
+        /// <summary>
+        /// 执行检测方法，根据传入的num参数决定执行检测次数
+        /// </summary>
+        /// <param name="num"></param>
+        private void Test(int num)
+        {
+            AddLog($"开始{num} 次检测");
+
+            this.Invoke(new Action(() =>
+            {
+                // 1: 执行测量脚本
+                vp.IdentifyTB.Run();
+            }));
+
+            //-----------------设置显示图片代码------------------------
+
+            // 获取N点标定工具运行结果 输出图片
+            CogCalibNPointToNPointTool calibTool = null;
+            foreach (var t in vp.IdentifyTB.Tools)
+            {
+                if (t is CogCalibNPointToNPointTool)
+                {
+                    calibTool = t as CogCalibNPointToNPointTool;
+                    break;
+                }
+            }
+            // 如果已经获取到N点标定工具
+            if (calibTool != null)
+            {
+                string key = calibTool.Name + ".OutputImage";
+                cogRecordDisplay1.Record = vp.IdentifyTB.CreateLastRunRecord().SubRecords[key];
+            }
+            //-----------------------------
+
+            if (num == 1)
+            {
+                // 2 获取当前执行测量脚本输出的弧度
+                float r = Convert.ToSingle(vp.IdentifyTB.Outputs["Angle"].Value);
+                // 2.1 弧度转化为角度
+                r = (float)((180.0 / Math.PI) * r);
+                // 2.2 求偏移值 = 当前检测角度 - 基准角度
+                // 注意：这里求的角度与机器角度是否相反，我们这里是相反的
+                float offsetR = r - (float)config.BaseR;
+                AddLog($"旋转检测结果：角度{r}  偏移角度：{offsetR}");
+                // 3：告诉plc偏移角度是多少
+                plc.OffsetR = offsetR;
+               
+            }
+            if (num == 2)
+            {
+                // 2.获取测量算法执行时，输出的姐u共
+                float x = Convert.ToSingle(vp.IdentifyTB.Outputs["X"].Value);
+                float y = Convert.ToSingle(vp.IdentifyTB.Outputs["Y"].Value);
+                // 2.2 求x y 的偏移值
+                float offsetX = -(x - (float)config.BaseX);
+                float offsetY = -(y - (float)config.BaseY);
+
+                // 2.3 通知plc
+
+                plc.OffsetX = offsetX;
+                plc.OffsetY = offsetY;
+                AddLog($"xy检测结果 x:{x}  y: {y}  x偏移：{offsetX}  y偏移量 {offsetY}");
+
+            }
+            plc.MeasureCheckNo = num;
+            AddLog($"{num} 次偏移值发送完成");
+
         }
 
 
@@ -136,7 +208,7 @@ namespace UI
             //等待vpp文件加载，成功或失败写入日志
 
             //设置按钮状态
-            
+
             button_C1.Enabled = false;
             button_C2.Enabled = false;
         }
@@ -192,7 +264,7 @@ namespace UI
         private async void button_ConnectPLC_Click(object sender, EventArgs e)
         {
             await ConnectPlc();
-           
+
         }
 
 
@@ -215,7 +287,7 @@ namespace UI
 
                 AddLog("PLC断开连接失败：" + ex.Message);
             }
-            
+
         }
 
         #endregion
@@ -234,6 +306,7 @@ namespace UI
             ForConfig forConfig = new ForConfig();
             forConfig.ShowDialog();
             log.WriteLog("打开PLC设置界面", 1);
+            AddLog("打开PLC设置界面");
         }
 
 
@@ -246,6 +319,8 @@ namespace UI
         {
             ForNpoint forNpoint = new ForNpoint();
             forNpoint.ShowDialog();
+            log.WriteLog("打开九点标定界面", 1);
+            AddLog("打开九点标定界面");
         }
 
 
@@ -256,8 +331,10 @@ namespace UI
         /// <param name="e"></param>
         private void 原点标定ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmCenter frmCenter=new FrmCenter();
+            FrmCenter frmCenter = new FrmCenter();
             frmCenter.ShowDialog();
+            log.WriteLog("打开原点标定界面", 1);
+            AddLog("打开原点标定界面");
         }
 
 
@@ -281,6 +358,8 @@ namespace UI
         {
             FrmJob frmJob = new FrmJob();
             frmJob.ShowDialog();
+            log.WriteLog("打开作业管理界面", 1);
+            AddLog("打开作业管理界面");
         }
 
 
@@ -294,9 +373,39 @@ namespace UI
             FrmNporintJob frmNporintJob = new FrmNporintJob();
             frmNporintJob.ShowDialog();
             log.WriteLog("打开工具管理界面", 1);
+            AddLog("打开工具管理界面");
         }
 
 
+
+
+        // 坐标九点标定，旋转标定后，求不补偿值
+
+        /// <summary>
+        /// 按钮C1点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button_C1_Click(object sender, EventArgs e)
+        {
+            Test(1);//一次测量
+        }
+
+
+        /// <summary>
+        /// 按钮C2点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button_C2_Click(object sender, EventArgs e)
+        {
+            Test(2);//二次测量
+        }
+
+
+
         #endregion
+
+
     }
 }

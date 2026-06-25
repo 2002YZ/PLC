@@ -228,7 +228,7 @@ namespace BAL
         public float OffsetX 
         { 
             get { return offsetX; } 
-            private set 
+            set 
             {
                 offsetX = value;
                 WritePlc(OffsetXAddr, value);
@@ -243,7 +243,7 @@ namespace BAL
         public float OffsetY
         {
             get { return offsetY; }
-            private set
+             set
             {
                 offsetY = value;
                 WritePlc(OffsetYAddr, value);
@@ -258,7 +258,7 @@ namespace BAL
         public float OffsetR
         {
             get { return offsetR; }
-            private set
+            set
             {
                 offsetR = value;
                 WritePlc(OffsetRAddr, value);
